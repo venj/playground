@@ -19,7 +19,6 @@
 		254DD79E17055D6E00F6DC9C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254DD79C17055D6E00F6DC9C /* MainStoryboard.storyboard */; };
 		254DD7A117055D6E00F6DC9C /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254DD7A017055D6E00F6DC9C /* MasterViewController.m */; };
 		254DD7A417055D6E00F6DC9C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254DD7A317055D6E00F6DC9C /* DetailViewController.m */; };
-		254DD7AC17055DC000F6DC9C /* VCMessageView.h in Sources */ = {isa = PBXBuildFile; fileRef = 254DD7AA17055DC000F6DC9C /* VCMessageView.h */; };
 		254DD7AD17055DC000F6DC9C /* VCMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 254DD7AB17055DC000F6DC9C /* VCMessageView.m */; };
 		254DD7B01705700300F6DC9C /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 254DD7AE1705700300F6DC9C /* info.png */; };
 		254DD7B11705700300F6DC9C /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 254DD7AF1705700300F6DC9C /* info@2x.png */; };
@@ -196,7 +195,6 @@
 				254DD79517055D6E00F6DC9C /* AppDelegate.m in Sources */,
 				254DD7A117055D6E00F6DC9C /* MasterViewController.m in Sources */,
 				254DD7A417055D6E00F6DC9C /* DetailViewController.m in Sources */,
-				254DD7AC17055DC000F6DC9C /* VCMessageView.h in Sources */,
 				254DD7AD17055DC000F6DC9C /* VCMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +320,7 @@
 				254DD7A917055D6E00F6DC9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -30,35 +30,40 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     CGFloat height = self.frame.size.height, width = self.frame.size.width;
     CGFloat iconPaddingLeft = 10., iconPaddingTop = height * 0.15, iconWidthHeight = height * 0.7;
     CGFloat labelPaddingLeft = 0;
     CGRect labelFrame = CGRectZero;
-    if (self.icon) {
+    if (self.icon && !self.iconView) {
         self.iconView = [[UIImageView alloc] initWithImage:self.icon];
         self.iconView.backgroundColor = [UIColor clearColor];
         [self addSubview:self.iconView];
         self.iconView.frame = CGRectMake(iconPaddingLeft, iconPaddingTop, iconWidthHeight, iconWidthHeight);
         labelPaddingLeft = iconPaddingLeft * 2 + iconWidthHeight;
     }
-    labelFrame = CGRectMake(labelPaddingLeft, 0.0, width - labelPaddingLeft, height);
-    self.messageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    UIFont *messageFont = [UIFont systemFontOfSize:floorf(0.95 * height)];
-    UIColor *messageColor = [UIColor redColor];
-    if ([self.messageLabel respondsToSelector:@selector(attributedText)]) {
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.alignment = NSTextAlignmentCenter;
-        NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.message attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: messageFont }];
-        self.messageLabel.attributedText = attrString;
+    if (!self.messageLabel) {
+        labelFrame = CGRectMake(labelPaddingLeft, 0.0, width - labelPaddingLeft, height);
+        self.messageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        UIFont *messageFont = [UIFont systemFontOfSize:floorf(0.95 * height)];
+        UIColor *messageColor = [UIColor redColor];
+        if ([self.messageLabel respondsToSelector:@selector(attributedText)]) {
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.alignment = NSTextAlignmentCenter;
+            NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.message attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: messageFont }];
+            self.messageLabel.attributedText = attrString;
+        }
+        else {
+            self.messageLabel.textAlignment = UITextAlignmentCenter;
+            self.messageLabel.font = messageFont;
+            self.messageLabel.text = self.message;
+        }
+        self.messageLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        self.messageLabel.textColor = messageColor;
+        self.messageLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.messageLabel];
+        self.messageLabel.frame = labelFrame;
     }
-    else {
-        self.messageLabel.textAlignment = UITextAlignmentCenter;
-        self.messageLabel.font = messageFont;
-    }
-    self.messageLabel.textColor = messageColor;
-    self.messageLabel.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.messageLabel];
-    self.messageLabel.frame = labelFrame;
 }
 
 - (void)showInView:(UIView *)parentView {
@@ -67,10 +72,10 @@
     }
     [parentView addSubview:self];
     [parentView sendSubviewToBack:self];
-    CGFloat witdh = parentView.frame.size.width;
+    CGFloat width = parentView.frame.size.width;
     CGFloat height = 16.;
-    CGRect beforeFrame = CGRectMake(0, -1 * height, witdh, height);
-    CGRect afterFrame = CGRectMake(0, 0, witdh, height);
+    CGRect beforeFrame = CGRectMake(0, -1 * height, width, height);
+    CGRect afterFrame = CGRectMake(0, 0, width, height);
     self.frame = beforeFrame;
     // Set bgcolor here
     self.backgroundColor = [UIColor lightGrayColor];
