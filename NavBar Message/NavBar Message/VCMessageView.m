@@ -9,7 +9,6 @@
 #import "VCMessageView.h"
 
 @interface VCMessageView()
-@property (nonatomic, strong) UILabel *messageLabel;
 @property (nonatomic, strong) UIImageView *iconView;
 @end
 
@@ -21,6 +20,7 @@
     if (self) {
         // Initialization code
         _backgroundImage = nil;
+        _textLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     }
     return self;
 }
@@ -35,35 +35,31 @@
     CGFloat iconPaddingLeft = 10., iconPaddingTop = height * 0.15, iconWidthHeight = height * 0.7;
     CGFloat labelPaddingLeft = 0;
     CGRect labelFrame = CGRectZero;
-    if (self.icon && !self.iconView) {
+    if (self.icon) {
         self.iconView = [[UIImageView alloc] initWithImage:self.icon];
         self.iconView.backgroundColor = [UIColor clearColor];
         [self addSubview:self.iconView];
         self.iconView.frame = CGRectMake(iconPaddingLeft, iconPaddingTop, iconWidthHeight, iconWidthHeight);
-        labelPaddingLeft = iconPaddingLeft * 2 + iconWidthHeight;
+        labelPaddingLeft = iconPaddingLeft + iconWidthHeight;
     }
-    if (!self.messageLabel) {
-        labelFrame = CGRectMake(labelPaddingLeft, 0.0, width - labelPaddingLeft, height);
-        self.messageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        UIFont *messageFont = [UIFont systemFontOfSize:floorf(0.95 * height)];
-        UIColor *messageColor = [UIColor redColor];
-        if ([self.messageLabel respondsToSelector:@selector(attributedText)]) {
-            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-            paragraphStyle.alignment = NSTextAlignmentCenter;
-            NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.message attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: messageFont }];
-            self.messageLabel.attributedText = attrString;
-        }
-        else {
-            self.messageLabel.textAlignment = UITextAlignmentCenter;
-            self.messageLabel.font = messageFont;
-            self.messageLabel.text = self.message;
-        }
-        self.messageLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        self.messageLabel.textColor = messageColor;
-        self.messageLabel.backgroundColor = [UIColor clearColor];
-        [self addSubview:self.messageLabel];
-        self.messageLabel.frame = labelFrame;
+    labelFrame = CGRectMake(labelPaddingLeft, 0.0, width - labelPaddingLeft, height);
+    UIFont *messageFont = [UIFont systemFontOfSize:floorf(0.95 * height)];
+    UIColor *messageColor = [UIColor redColor];
+    if ([self.textLabel respondsToSelector:@selector(attributedText)]) {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.alignment = NSTextAlignmentCenter;
+        NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.textLabel.text attributes:@{ NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: messageFont }];
+        self.textLabel.attributedText = attrString;
     }
+    else {
+        self.textLabel.textAlignment = UITextAlignmentCenter;
+        self.textLabel.font = messageFont;
+    }
+    self.textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.textLabel.textColor = messageColor;
+    self.textLabel.backgroundColor = [UIColor clearColor];
+    [self addSubview:self.textLabel];
+    self.textLabel.frame = labelFrame;
 }
 
 - (void)showInView:(UIView *)parentView {

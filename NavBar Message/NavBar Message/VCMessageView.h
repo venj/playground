@@ -10,7 +10,7 @@
 
 @interface VCMessageView : UIView
 @property (nonatomic, strong) UIImage *icon;
-@property (nonatomic, strong) NSString *message;
+@property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, strong) UIImage *backgroundImage;
 - (void)showInView:(UIView *)parentView;
 @end

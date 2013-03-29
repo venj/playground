@@ -34,7 +34,6 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.messageView = [[VCMessageView alloc] initWithFrame:CGRectZero];
     self.messageView.icon = [UIImage imageNamed:@"info"];
-    self.messageView.message = @"Hello";
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,6 +48,7 @@
 
 - (void)insertNewObject:(id)sender
 {
+    self.messageView.textLabel.text = @"Hello";
     [self.messageView showInView:[self.view superview]];
     /*if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
