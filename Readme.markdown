@@ -5,15 +5,31 @@ This is a playground for myself.
 
 The codes here are basically *ALL* template generated code from Xcode (or other tools).
 
-The projects here are just for fun, and not mature for production.
+The projects here are just for fun (and as reminders to myself), and may be not mature for production.
 
-Projects
-========
+Projects Details
+================
 
 iOS
 ---
 
-**NavBar Message**: Mimic the info bar that can automatically hide, which can be used to replace UIAlertView or HUD in some occasions.
+**NavBar Message**
+
+*Mimic the info bar that can automatically hide, which can be used to replace UIAlertView or HUD in some occasions.*
+
+A small info bar usually under navbar, which shows info to users, it will automatically hide itself within some seconds.
+
+Know issue: View resize behavior is not right while rotating the device.
+
+**ARC Shadow Table View**
+
+*Shadow Table View originally by [Cocoa with love](http://www.cocoawithlove.com/2009/08/adding-shadow-effects-to-uitableview.html), remastered with ARC (and only ARC).*
+
+This is the sample project to add shadows to tableview. 
+
+The main class file are `ShadowTableView.h` && `ShadowTableView.m`. 
+
+`GradientView.h` and `GradientView.m` are for table view cell gradient background.
 
 Mac
 ---
@@ -21,6 +37,7 @@ Mac
 **Empty for now.**
 
 (More projects to come.)
+
 
 License
 =======
