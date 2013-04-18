@@ -31,6 +31,21 @@ The main class file are `ShadowTableView.h` && `ShadowTableView.m`.
 
 `GradientView.h` and `GradientView.m` are for table view cell gradient background.
 
+**TapBack**
+
+It is convinent to add doubletap gesture to navigation bar to let user quickly go back to the root level of the navigation controller's view controller stack. TapBack is a such demo app.
+
+The core lies on a `UINavigationBar` subclass `VCNavigationBar`. Add VCNavigationBar.h and VCNavigationBar.m into your project, and import the header, then add following code (with your modification) to the proper place in your app:
+
+```objc
+TableViewController *tvControl = [[TableViewController alloc] initWithNibName:nil bundle:nil];
+UINavigationController *nav = [[UINavigationController alloc] initWithNavigationBarClass:[VCNavigationBar class] toolbarClass:nil];
+[nav addChildViewController:tvControl];
+self.window.rootViewController = nav;
+```
+
+Before you use the code, you can try the demo app first. Click through into a really deeeeeeeep level in the view controller stack and then double tap the nav bar, and boom, you are back home again. ;) 
+
 Mac
 ---
 
