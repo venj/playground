@@ -21,6 +21,8 @@ iOS
 
 Not finished yet!!!
 
+![Gif](https://raw.githubusercontent.com/venj/playground/master/CustomScrollView/screen.gif)
+
 **NavBar Message**
 
 *Mimic the info bar that can automatically hide, which can be used to replace UIAlertView or HUD in some occasions.*
