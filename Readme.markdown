@@ -13,6 +13,14 @@ Projects Details
 iOS
 ---
 
+**CustomScrollView**
+
+*Try to make a taobao product page scroll behavier replica.*
+
+尝试实现类似淘宝产品页面的滚动效果。正在尝试中，未完成。
+
+Not finished yet!!!
+
 **NavBar Message**
 
 *Mimic the info bar that can automatically hide, which can be used to replace UIAlertView or HUD in some occasions.*
